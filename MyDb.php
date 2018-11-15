@@ -6,11 +6,9 @@ class MyDb extends SQLite3
 
     public $pass = 'LsrlWV4C';
 
-    public $db;
+    public $etiketki = array();
 
-    public $etiketki = [];
-
-    public $popular_etiketki = [];
+    public $popular_etiketki = array();
 
     public function __construct()
     {
@@ -22,15 +20,32 @@ class MyDb extends SQLite3
 
     public function addProduct(array $arr)
     {
-        $answer = 'NO';
+        $query = "INSERT INTO etiketki (product_name,price,price_box) VALUES ('" . strip_tags($arr['name']) . "','" . strip_tags($arr['price']) . "','" . strip_tags($arr['boxprice']) . "')";
 
-        $query = "INSERT INTO etiketki (product_name,price,price_box) VALUES ('" . strip_tags($arr['name']) . "','" . strip_tags($arr['price']) . "','" .strip_tags( $arr['boxprice']) . "')";
+        $this->exec($query);
 
-        if($this->exec($query)){
-            $answer = 'OK';
-        }
+    }
 
-        return $answer;
+    public function addPopularProduct(array $arr)
+    {
+        $query = "INSERT INTO popular_etiketki (product_name,price,price_box) VALUES ('" . strip_tags($arr['name']) . "','" . strip_tags($arr['price']) . "','" . strip_tags($arr['boxprice']) . "')";
+
+        $this->exec($query);
+
+    }
+
+    public function updateProduct(array $arr)
+    {
+        $query = "UPDATE etiketki SET product_name = '" . strip_tags($arr['name']) . "', price = '" . strip_tags($arr['price']) . "',price_box='" . strip_tags($arr['boxprice']) . "' WHERE id = '" . (int) $arr['id'] . "'";
+
+        $this->exec($query);
+    }
+
+    public function updatePopularProduct(array $arr)
+    {
+        $query = "UPDATE popular_etiketki SET product_name = '" . strip_tags($arr['name']) . "', price = '" . strip_tags($arr['price']) . "',price_box='" . strip_tags($arr['boxprice']) . "' WHERE id = '" . (int) $arr['id'] . "'";
+
+        $this->exec($query);
     }
 
     public function getAllProduct()
@@ -42,10 +57,10 @@ class MyDb extends SQLite3
         }
 
 
-        return json_encode($this->etiketki, JSON_UNESCAPED_UNICODE);
+        return json_encode($this->etiketki);
     }
 
-    public function getAllPopularEtiketki()
+    public function getAllPopularProduct()
     {
         $result = $this->query('SELECT * FROM popular_etiketki');
 
@@ -54,7 +69,7 @@ class MyDb extends SQLite3
         }
 
 
-        return json_encode($this->popular_etiketki, JSON_UNESCAPED_UNICODE);
+        return json_encode($this->popular_etiketki);
     }
 
     public function getUser()

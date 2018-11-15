@@ -18,8 +18,23 @@ function action(array $arr)
         $db->addProduct($arr);
         $output =  'Товар добавлен';
     }
+    if($arr['action'] == 'addPopularProduct'){
+        $db->addPopularProduct($arr);
+        $output =  'Товар добавлен';
+    }
     if($arr['action'] == 'showProducts'){
         $output = $db->getAllProduct();
+    }
+    if($arr['action'] == 'showPopularProducts'){
+        $output = $db->getAllPopularProduct();
+    }
+    if($arr['action'] == 'updateProduct'){
+        $db->updateProduct($arr);
+        $output= 'Товар обновлен';
+    }
+    if($arr['action'] == 'updatePopularProduct'){
+        $db->updatePopularProduct($arr);
+        $output= 'Товар обновлен';
     }
 
 
@@ -30,7 +45,7 @@ function action(array $arr)
 
 function verificateUser(array $arr)
 {
-    $json = [];
+    $json = array();
     $login = '';
     $pass = '';
     if(array_key_exists('login', $arr)){
