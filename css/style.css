@@ -1,0 +1,143 @@
+#form {
+    width: 375px;
+    height: 375px;
+    margin: 0 auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+.form-header {
+    background-color: #f6cc67;
+    text-align: center;
+    font-size: 26px;
+    line-height: 50px;
+    font-family: Myriad Pro Regular, sans-serif;
+}
+
+.form {
+    border: 4px solid #b050c1;
+    width: 100%;
+    height: 84%;
+    box-sizing: border-box;
+    border-top: none;
+}
+
+.form-items {
+    padding: 20px;
+    margin: 0 auto;
+}
+span.gg {
+    opacity: 0;
+}
+
+.form-items label {
+    display: block;
+    font-size: 20px;
+    padding-left: 55px;
+}
+
+.form-items button {
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background-color: #b050c1;
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-bottom: 5px solid #ab4692;
+    outline: 0;
+!important;
+}
+
+.form-items button:active {
+    background-color: #ab4692;
+}
+
+.error {
+    height: 41px;
+}
+
+#error-text {
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0 0 0;
+    font-size: 18px;
+    color: red;
+}
+
+.admin-head {
+    height: 30px;
+    border: 1px solid grey;
+    background-color: #b050c1;
+}
+
+.head-list {
+    list-style-type: none;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 35px;
+}
+
+.head-list > li {
+    line-height: 30px;
+}
+
+#userName {
+    color: #fff;
+    padding: 0 10px;
+    font-size: 17px;
+}
+
+.head-list button {
+    height: 31px;
+    width: 100px;
+    background-color: #f6cc67;
+    font-size: 17px;
+}
+
+.head-list button img {
+    height: 12px;
+}
+
+input[type=text], input[type=number] {
+    height: 25px;
+    padding-left: 10px;
+    margin: 10px;
+}
+
+
+input[type=button]{
+    background-color: #b050c1;
+    color: #fff;
+    height: 30px;
+    outline: none;
+}
+
+input[type=button]:disabled {
+    background-color: grey;
+}
+
+.form-items input {
+    border: 2px solid #bebebe;
+    width: 210px;
+    height: 25px;
+    padding: 5px;
+    margin: 5px auto;
+    display: block;
+}
+
+table input[type=text]{
+    width: 450px;
+}
+.product-table {
+    margin-top: 20px;
+}
+.footer {
+    text-align: center;
+    opacity: 0;
+}
