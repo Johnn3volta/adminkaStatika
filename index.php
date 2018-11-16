@@ -122,7 +122,6 @@
             <hr>
           </td>
         </tr>
-          <?php #getPopular(); ?>
       </table>
       <hr>
       <div class="footer">
@@ -134,47 +133,3 @@
 </body>
 </html>
 
-<?php
-$f = file('base.php');
-$f2 = file('popular.php');
-function res($f){
-$rr = array();
-for ($i = 0; $i < count($f); $i++) {
-    $product = explode(';',$f[$i]);
-    $rr[] = $product;
-}
-
-unset($rr[0][0]);
-unset($rr[0]);
-
-$min = array();
-$max = array();
-$reg = '/(^[\\$][a-zA-Z]+)([0-9]{1,2}[=])(\')/';
-foreach ($rr as $ke => $r) {
-    unset($r[3]);
-    foreach ($r as $key => $g) {
-
-      $max[$key] = preg_replace($reg,'',rtrim($g,"'"));;
-
-    }
-    $min[$ke] = $max;
-}
-return $min;
-}
-$db = new MyDb();
-$ff1 = res($f);
-$ff2 = res($f2);
-$pass = sha1('LsrlWV4C');
-$db->exec("INSERT INTO `user` (`name`,`password`) VALUES ('admin','".$pass."')");
-
-foreach ($ff1 as $f){
-    $db->exec("INSERT INTO etiketki (product_name, price, price_box) VALUES ('".$f[0]."','".$f[1]."','". $f[2] ."')");
-}
-foreach ($ff2 as $f){
-    $db->exec("INSERT INTO popular_etiketki (product_name, price, price_box) VALUES ('".$f[0]."','".$f[1]."','". $f[2] ."')");
-}
-
-
-
-
-?>
